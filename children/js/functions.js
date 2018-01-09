@@ -98,7 +98,6 @@ function timeElapse(date){
 	//var seconds = (current.getTime() - date.getTime()) / 1000;
 	var seconds = (Date.parse(current) - Date.parse(date)) / 1000;
 	var days = Math.floor(seconds / (3600 * 24));
-	debugger;
 	var sui = parseInt(days/365);
 	var sui_date = days%365;
 	seconds = seconds % (3600 * 24);
@@ -117,6 +116,31 @@ function timeElapse(date){
 	}
 	var result = "<span class=\"digit\">" +"<b>" + sui + "</b>" + "岁<b>" + sui_date + "</b></span> 天 <span class=\"digit\">" + hours + "</span> hours <span class=\"digit\">" + minutes + "</span> minutes <span class=\"digit\">" + seconds + "</span> seconds"; 
 	$("#elapseClock").html(result);
+}
+
+function timeElapse_two(date){
+	var current = new Date();
+	//以下两条语句功能是相同的
+	//var seconds = (current.getTime() - date.getTime()) / 1000;
+	var seconds = (Date.parse(current) - Date.parse(date)) / 1000;
+	var days = Math.floor(seconds / (3600 * 24));
+	var sui = parseInt(days/365);
+	var sui_date = days%365;
+	seconds = seconds % (3600 * 24);
+	var hours = Math.floor(seconds / 3600);
+	if (hours < 10) {
+		hours = "0" + hours;
+	}
+	seconds = seconds % 3600;
+	var minutes = Math.floor(seconds / 60);
+	if (minutes < 10) {
+		minutes = "0" + minutes;
+	}
+	seconds = seconds % 60;
+	if (seconds < 10) {
+		seconds = "0" + seconds;
+	}
+	var result = "<span class=\"digit\">" +"<b>" + sui + "</b>" + "岁<b>" + sui_date + "</b></span> 天 <span class=\"digit\">" + hours + "</span> hours <span class=\"digit\">" + minutes + "</span> minutes <span class=\"digit\">" + seconds + "</span> seconds"; 
 	$("#elapseClock2").html(result);
 }
 
