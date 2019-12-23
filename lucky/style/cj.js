@@ -1,24 +1,27 @@
 var xinm = [
-"张三","李四","王五","赵六","良七","丈八","久久","离十","白金香","白应梅","柏仁燕","鲍学梅","蔡  艳","曹发敏"
+    "小米音响1个",
+    "小米音响1个",
+    "小米音响1个",
+    "小米音响1个",
+    "小米音响1个",
+    "榨汁机1个",
+    "榨汁机1个",
+    "榨汁机1个",
+    "榨汁机1个",
+    "榨汁机1个",
+    "榨汁机1个",
+    "网红音响1个",
+    "网红音响1个",
+    "网红音响1个",
+    "复古音响1个",
+    "复古音响1个",
+    "复古音响1个"
 ];
 
-var phone = new Array();
-phone[0] = "13800138001"
-phone[1] = "13800138002"
-phone[2] = "13800138003"
-phone[3] = "13800138004"
-phone[4] = "13800138005"
-phone[5] = "13800138006"
-phone[6] = "13800138007"
-phone[7] = "13800138008"
-phone[8] = "13800138009"
-phone[9] = "13800138010"
-
 var nametxt = $('.name');
-var phonetxt = $('.phone');
 var pcount = xinm.length-1;//参加人数
 var runing = true;
-var td = 10;//内定中奖,从最小奖开始，共10个名额
+var td = xinm.length;//内定中奖,从最小奖开始，共10个名额
 var num = 0;
 var t;
 var paiming = 0;
@@ -41,7 +44,7 @@ function start() {
 function startNum() {
 	num = Math.floor(Math.random() * pcount);
 	nametxt.html(xinm[num]);
-	phonetxt.html(phone[num]);
+	//phonetxt.html(phone[num]);
 	t = setTimeout(startNum, 0);
 }
 //停止跳动
@@ -70,15 +73,17 @@ function zd() {
 //        $('.list').prepend("<p>"+td+' '+"张三三 -- 1511111111</p>");
 //    }
 //	}else if(td > 0){
-	if(td > 0){
+		//if(td > 0){
+        if(xinm.length <= 0){
+            alert("抽奖结束");
+            runing=true;
+            return;
+        }
 		//打印中奖者名单
-		$('.list').prepend("<p>"+(paiming)+' '+xinm[num]+" -- "+phone[num]+"</p>");
-		if(pcount <= 0){
-			alert("投票结束");
-		}
+		//$('.list').prepend("<p style=\"text-align: center\">"+(paiming)+' '+xinm[num]+ "</p>");
+        $('.list').append("<p>"+(paiming)+' '+xinm[num]+ "</p>");
 		//将已中奖者从数组中"删除",防止二次中奖
 		xinm.splice($.inArray(xinm[num], xinm), 1);
-		phone.splice($.inArray(phone[num], phone), 1);
-	}
-	td = td - 1;
+		//}
+		td = td - 1;
 }
